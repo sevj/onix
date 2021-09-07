@@ -1,0 +1,20 @@
+{
+    "name": "adimeo/onix-parser",
+    "autoload": {
+        "psr-4": {
+            "Adimeo\\Onix\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jordan",
+            "email": "jheussler@adimeo.com"
+        }
+    ],
+    "require": {
+        "ext-simplexml": "*"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.3"
+    }
+}
