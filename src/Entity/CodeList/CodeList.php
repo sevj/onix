@@ -1,9 +1,6 @@
 <?php
 
-namespace Ribal\Onix\CodeList;
-
-use Ribal\Onix\Exception\InvalidCodeListCodeException;
-use Ribal\Onix\Exception\InvalidCodeListLanguageException;
+namespace Adimeo\Onix\Entity\CodeList;
 
 class CodeList
 {
@@ -35,11 +32,11 @@ class CodeList
         $codeList = new static();
 
         if (!isset($codeList::$$language) || !is_array($codeList::$$language)) {
-            throw new InvalidCodeListLanguageException(sprintf('Missing language \'%s\' in %s', $language, static::class));
+            throw new \Exception(sprintf('Missing language \'%s\' in %s', $language, static::class));
         }
 
         if (!array_key_exists($code, $codeList::$$language)) {
-            throw new InvalidCodeListCodeException(sprintf('Missing code %s for language %s in %s', $code, $language, static::class));
+            throw new \Exception(sprintf('Missing code %s for language %s in %s', $code, $language, static::class));
         }
 
         $codeList->code = $code;

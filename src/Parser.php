@@ -2,38 +2,65 @@
 
 namespace Adimeo\Onix;
 
-use Adimeo\Onix\Entity\ExtractionRules\Product\Barcode;
-use Adimeo\Onix\Entity\ExtractionRules\Product\ProductComposition;
-use Adimeo\Onix\Entity\ExtractionRules\Product\ProductIdentifier;
-use Adimeo\Onix\Entity\Product;
+use Adimeo\Onix\Entity\Product\Product;
 
 class Parser
 {
     protected $xml;
     protected $products;
 
+    protected $rules = [
+        \Adimeo\Onix\Entity\ExtractionRules\Product::class
+    ];
+
     public function __construct(string $xml)
     {
         $this->xml = $xml;
+    }
+
+    public function parseByBatch($start = 0, $limit = 100)
+    {
+        $xml = simplexml_load_file($this->xml);
+        $xml->registerXPathNamespace('product', 'http://www.editeur.org/onix/3.0/reference');
+
+        $end = $start + $limit;
+        $expression = sprintf('product:Product[position()<=%s and position()>%s]', $end, $start);
+        $products = $xml->xpath($expression);
+
+        $this->parseProducts($products);
+    }
+
+    protected function parseProducts(array $products)
+    {
+        $this->products = [];
+        foreach ($products as $xmlProduct) {
+            $product = new Product();
+
+            foreach ($this->rules as $rule) {
+                (new $rule($product))->proceed($xmlProduct);
+            }
+
+            $this->products[] = $product;
+        }
     }
 
     public function parse()
     {
         $xml = simplexml_load_file($this->xml);
 
-        $rules = [
-            ProductIdentifier::class,
-            Barcode::class,
-            ProductComposition::class
-        ];
+        $xml->registerXPathNamespace('product', 'http://www.editeur.org/onix/3.0/reference');
 
+        $expression = sprintf('product:Product');
+        $products = $xml->xpath($expression);
 
-        foreach ($xml->Product as $xmlProduct) {
-            $product = new Product();
+        $this->parseProducts($products);
+    }
 
-            foreach ($rules as $rule) {
-                (new $rule($product))->proceed($xmlProduct);
-            }
-        }
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

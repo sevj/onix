@@ -1,6 +1,6 @@
 <?php
 
-namespace Ribal\Onix\CodeList;
+namespace Adimeo\Onix\Entity\CodeList;
 
 /**
  * ONIX Code List 220
