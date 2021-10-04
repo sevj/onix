@@ -35,7 +35,7 @@ class Date
     {
         $this->formatCode = $formatCode;
     }
-    
+
     /**
      * Parse the input date string
      *
@@ -150,14 +150,14 @@ class Date
     public static function parse(string $input, string $formatCode = "00")
     {
         $class = new self();
-        
+
         $class->setFormatCode(CodeList55::resolve($formatCode));
         $class->parseDate($input);
 
         return $class;
 
     }
-    
+
     /**
      * Format the dates with the given date format
      *
@@ -167,14 +167,14 @@ class Date
     public function format(string $dateFormat)
     {
     	$output = '';
-    	
+
     	foreach ($this->dates as $i => $date) {
 			if ($i > 0) {
 				$output .= ' – ';
 			}
 			$output .= $date->format($dateFormat);
     	}
-    	
+
     	return $output;
     }
 
@@ -188,4 +188,11 @@ class Date
         // TODO
     }
 
+    /**
+     * @return array
+     */
+    public function getDates(): array
+    {
+        return $this->dates;
+    }
 }

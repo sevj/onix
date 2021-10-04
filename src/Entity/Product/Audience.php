@@ -2,6 +2,7 @@
 
 namespace Adimeo\Onix\Entity\Product;
 
+use Adimeo\Onix\Entity\CodeList\CodeList28;
 use Adimeo\Onix\Entity\CodeList\CodeList29;
 
 class Audience
@@ -17,7 +18,7 @@ class Audience
     /**
      * AudienceCodeValue
      *
-     * @var string
+     * @var CodeList28
      */
     protected $AudienceCodeValue;
 
@@ -38,7 +39,7 @@ class Audience
      * @param string $AudienceCodeValue
      * @return void
      */
-    public function setAudienceCodeValue(string $AudienceCodeValue)
+    public function setAudienceCodeValue(CodeList28 $AudienceCodeValue)
     {
         $this->AudienceCodeValue = $AudienceCodeValue;
     }

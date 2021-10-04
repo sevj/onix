@@ -131,6 +131,13 @@ class DescriptiveDetail
     protected $Audience = [];
 
     /**
+     * Array of Audiences Range
+     *
+     * @var array
+     */
+    protected $AudienceRange = [];
+
+    /**
      * Set ProductComposition
      *
      * @param string $ProductComposition
@@ -215,7 +222,7 @@ class DescriptiveDetail
      */
     public function removeMeasure(Measure $Measure)
     {
-        
+
     }
 
     /**
@@ -336,7 +343,7 @@ class DescriptiveDetail
     {
         $this->Collection[] = $Collection;
     }
-    
+
     /**
      * Remove Collection
      *
@@ -357,6 +364,17 @@ class DescriptiveDetail
     public function addAudience(Audience $Audience)
     {
         $this->Audience[] = $Audience;
+    }
+
+    /**
+     * Add Audience
+     *
+     * @param Audience $Audience
+     * @return void
+     */
+    public function addAudienceRange(AudienceRange $Audience)
+    {
+        $this->AudienceRange[] = $Audience;
     }
 
     /**
@@ -399,7 +417,7 @@ class DescriptiveDetail
     {
         return $this->ProductFormDetail;
     }
-    
+
     /**
      * Remove ProductFormDetail
      *
@@ -429,7 +447,7 @@ class DescriptiveDetail
     {
         return $this->Measure;
     }
-    
+
     /**
      * Get all Measures
      *
@@ -519,7 +537,7 @@ class DescriptiveDetail
     {
         return $this->Subject;
     }
-    
+
     /**
      * Get all Subjects
      *
@@ -623,7 +641,7 @@ class DescriptiveDetail
     public function removeProductFormFeature(ProductFormFeature $ProductFormFeature)
     {
     }
-    
+
     /**
      * Get the height measure of the product, if set
      *
@@ -635,9 +653,9 @@ class DescriptiveDetail
     		if ($measure->isHeight()) {
     			return $measure;
     		}
-    	}    
+    	}
     }
-    
+
     /**
      * Get the width measure of the product, if set
      *
@@ -649,9 +667,9 @@ class DescriptiveDetail
     		if ($measure->isWidth()) {
     			return $measure;
     		}
-    	}    
+    	}
     }
-    
+
     /**
      * Get the thickness measure of the product, if set
      *
@@ -663,9 +681,9 @@ class DescriptiveDetail
     		if ($measure->isThickness()) {
     			return $measure;
     		}
-    	}    
+    	}
     }
-    
+
     /**
      * Get the weight measure of the product, if set
      *
@@ -677,9 +695,9 @@ class DescriptiveDetail
     		if ($measure->isWeight()) {
     			return $measure;
     		}
-    	}    
+    	}
     }
-    
+
     /**
      * Get all contributors marked as authors
      *
@@ -692,4 +710,21 @@ class DescriptiveDetail
     	});
     }
 
+    /**
+     * @return array
+     */
+    public function getAudienceRange(): array
+    {
+        return $this->AudienceRange;
+    }
+
+    /**
+     * @param array $AudienceRange
+     * @return DescriptiveDetail
+     */
+    public function setAudienceRange(array $AudienceRange): DescriptiveDetail
+    {
+        $this->AudienceRange = $AudienceRange;
+        return $this;
+    }
 }
