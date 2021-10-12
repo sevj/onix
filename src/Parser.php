@@ -56,6 +56,17 @@ class Parser
         $this->parseProducts($products);
     }
 
+    public function count(): int
+    {
+        $xml = simplexml_load_file($this->xml);
+        $xml->registerXPathNamespace('product', 'http://www.editeur.org/onix/3.0/reference');
+
+        $expression = 'product:Product';
+        $products = $xml->xpath($expression);
+
+        return count($products);
+    }
+
     /**
      * @return mixed
      */
