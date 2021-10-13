@@ -71,7 +71,7 @@ class MarketPublishingDetail
     /**
      * @return array
      */
-    public function getPublisherRepresentative(): array
+    public function getPublisherRepresentative(): ?array
     {
         return $this->publisherRepresentative;
     }

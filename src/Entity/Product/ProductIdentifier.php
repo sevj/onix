@@ -14,7 +14,7 @@ class ProductIdentifier
     /**
      * ProductIDType
      *
-     * @var CodeListList5
+     * @var CodeList5
      */
     protected $ProductIDType;
 
@@ -81,6 +81,12 @@ class ProductIdentifier
     {
         return $this->ProductIDType->getCode() == self::ISBN13_TYPE;
     }
+
+    public function isGTIN()
+    {
+        return $this->ProductIDType->getCode() == self::GTIN;
+    }
+
 
     /**
      * @return string
