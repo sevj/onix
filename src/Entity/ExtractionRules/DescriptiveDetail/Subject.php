@@ -15,6 +15,9 @@ class Subject extends AbstractExtractionRule implements ExtractionRule
 {
     public function proceed(\SimpleXMLElement $element): void
     {
+        if (!isset($element->Subject)) {
+            return;
+        }
         foreach ($element->Subject as $subjectElement) {
             $subject = new \Adimeo\Onix\Entity\Product\Subject();
             $subject->setMainSubject(isset($subjectElement->MainSubject));

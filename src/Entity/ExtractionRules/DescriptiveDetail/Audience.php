@@ -18,6 +18,9 @@ class Audience extends AbstractExtractionRule implements ExtractionRule
 {
     public function proceed(\SimpleXMLElement $element): void
     {
+        if (!isset($element->Audience)) {
+            return;
+        }
         foreach ($element->Audience as $audienceElement) {
             $audience = new \Adimeo\Onix\Entity\Product\Audience();
             $audience->setAudienceCodeType(CodeList29::resolve($audienceElement->AudienceCodeType, $this->language));

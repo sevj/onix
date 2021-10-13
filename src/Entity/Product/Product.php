@@ -89,6 +89,8 @@ class Product
 
     protected $barCodePosition;
 
+    protected $emptyBlocks = [];
+
     /**
      * Set the Products record reference
      *
@@ -355,5 +357,15 @@ class Product
     {
         $this->barCodePosition = $barCodePosition;
         return $this;
+    }
+
+    public function addEmptyBlock(string $block)
+    {
+        $this->emptyBlocks[] = $block;
+    }
+
+    public function isEmptyBlock(string $block)
+    {
+        return in_array($block, $this->emptyBlocks);
     }
 }

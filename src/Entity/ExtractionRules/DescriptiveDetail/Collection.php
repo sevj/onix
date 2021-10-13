@@ -14,6 +14,9 @@ class Collection extends AbstractExtractionRule implements ExtractionRule
 {
     public function proceed(\SimpleXMLElement $element): void
     {
+        if (!isset($element->Collection)) {
+            return;
+        }
         foreach ($element->Collection as $collectionElement) {
             if (isset($collectionElement->CollectionType)) {
                 $collection = new \Adimeo\Onix\Entity\Product\Collection();

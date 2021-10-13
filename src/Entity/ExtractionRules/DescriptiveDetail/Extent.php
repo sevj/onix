@@ -11,6 +11,9 @@ class Extent extends AbstractExtractionRule implements ExtractionRule
 {
     public function proceed(\SimpleXMLElement $element): void
     {
+        if (!isset($element->Extent)) {
+            return;
+        }
         foreach ($element->Extent as $extentElement) {
             $extent = new \Adimeo\Onix\Entity\Product\Extent();
             $extent->setExtentValue($extentElement->ExtentValue);
