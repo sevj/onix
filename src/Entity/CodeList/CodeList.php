@@ -46,6 +46,11 @@ class CodeList
 
     }
 
+    public static function getList(string $language = 'fr')
+    {
+        return static::$$language;
+    }
+
     /**
      * Get Code
      *
