@@ -378,9 +378,9 @@ class CodeList17 extends CodeList implements CodeListInterface
 	 * @see https://ns.editeur.org/onix/fr/17
 	 */
 	protected static $fr = [
-		'A01' => 'De (auteur)',
+		'A01' => 'Auteur',
 		'A02' => 'Avec',
-		'A03' => 'Scénario de',
+		'A03' => 'Scénariste',
 		'A04' => 'Livret de',
 		'A05' => 'Paroles de',
 		'A06' => 'De (compositeur)',
@@ -411,7 +411,7 @@ class CodeList17 extends CodeList implements CodeListInterface
 		'A32' => 'Contributions de',
 		'A33' => 'Annexes de',
 		'A34' => 'Index de',
-		'A35' => 'Dessins de',
+		'A35' => 'Dessinateur',
 		'A36' => 'Maquette ou illustration de couverture de',
 		'A37' => 'Œuvre préliminaire de',
 		'A38' => 'Auteur de l’idée originale',
